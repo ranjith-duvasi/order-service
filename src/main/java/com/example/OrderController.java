@@ -1,6 +1,7 @@
 package com.example;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.context.annotation.Bean;
@@ -10,6 +11,9 @@ import java.util.List;
 @RestController
 @RequestMapping("/orders")
 public class OrderController {
+
+    @Value("${products.service.baseurl}")
+    private String productsServiceBaseurl;
 
     @Autowired
     private RestTemplate restTemplate;
@@ -21,7 +25,7 @@ public class OrderController {
         StringBuilder productDetails = new StringBuilder();
         for (String productId : productIds) {
             String product = restTemplate.getForObject(
-                "http://localhost:8083/products/" + productId,
+                productsServiceBaseurl + productId,
                 String.class
             );
             productDetails.append(product).append("\n");
