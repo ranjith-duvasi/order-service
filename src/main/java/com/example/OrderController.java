@@ -30,8 +30,5 @@ public class OrderController {
         return "Orders for User ID " + userId + ":\n" + productDetails;
     }
 
-    @Bean
-    public RestTemplate restTemplate() {
-        return new RestTemplate();
-    }
+
 }
