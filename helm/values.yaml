@@ -4,7 +4,7 @@ appname: order-service
 
 image:
   repository: ranjith413
-  tag: IMAGE_TAG
+  tag: v25-1
 
   pullPolicy: IfNotPresent
 
